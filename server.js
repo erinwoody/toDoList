@@ -16,24 +16,22 @@ app.set("view engine", "mustache");
 app.use(express.static(path.join(__dirname, "./public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 
+let todos = [];
+
 app.get("/", (req, res) => {
-  res.render("index");
+    res.render('index', { todos: todos });
 });
 
-
-app.post("/signup", (req, res) => {
-  user = req.body; // simulate saving the user to the DB.
-  res.redirect("/");
+app.post("/newtodo", (req, res) => {
+    let newTodo = req.body;
+    newTodo.complete = false;
+    todos.push(newTodo);
+    res.redirect("/");
 });
- 
-
-
-
-
-
 
 
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on port ${port}`);
 });
+
