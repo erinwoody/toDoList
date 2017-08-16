@@ -21,8 +21,11 @@ app.get("/", (req, res) => {
 });
 
 
-
-
+app.post("/signup", (req, res) => {
+  user = req.body; // simulate saving the user to the DB.
+  res.redirect("/");
+});
+ 
 
 
 
