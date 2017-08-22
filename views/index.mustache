@@ -6,28 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css"
+
+
+ 
 </head>
 
-<body style="text-align:center;">
+<body class="wrapper">
+    <section class="container">
+        <h1>Todo List</h1>
 
-    <h1>To Do List...</h1>
+        <div class="inputbox">
+            <form action="/newtodo" method="post">
+            <label for="nameInput"></label>
+            <input id="nameInput" type="text" name="task" placeholder="Add a Todo" required>
+            <button type="submit">Add</button>
+            </form>
+        </div>
 
-    <form action="/newtodo" method="post">
-        <label for="nameInput">To Do</label>
-        <input id="nameInput" type="text" name="task" placeholder="Buy milk" required> <br>
-        <button type="submit">Submit</button>
-    </form>
-    <div class="todos">
-        {{#todos}}
-            {{#complete}}
-                <h1>{{task}}</h1> 
-            {{/complete}}
-            {{^complete}}
-                <h2>{{task}}</h2> 
-            {{/complete}}
-        {{/todos}}
-    </div>
+        <div class="todos">
 
+                {{#todos}} 
+                {{#complete}}
+                
+                {{task}}
+                {{/complete}}
+                {{^complete}}
+                
+                <form action="/complete/{{task}}" method="POST" id="complete"> 
+                {{task}} 
+                <input type="checkbox" id="checkbox"></input>
+                </form>  
+                
+                {{/complete}}
+                {{/todos}}
+                
+        </div>
+    
+    </section>
 </body>
-
 </html>
