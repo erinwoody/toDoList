@@ -7,7 +7,7 @@ const fs = require("fs");
 const port = process.env.PORT || 8000;
 const app = express();
 
-let user; // I don't have a DB so I'm just making a global var.
+let user;
 
 app.engine("mustache", mustacheExpress());
 app.set("views", "./views");
